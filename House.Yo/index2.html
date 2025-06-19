@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>House.Yo 好室優 - 租房媒合平台</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+      background-color: #ffffff;
+      color: #333;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+    .header {
+      text-align: center;
+      padding: 2rem 0;
+    }
+    .header img {
+      height: 100px;
+      max-width: 90%;
+    }
+    .btn-main {
+      display: block;
+      background: #764ba2;
+      color: white;
+      font-size: 1rem;
+      padding: 12px;
+      border-radius: 30px;
+      border: 2px solid #e0c4ff;
+      width: 100%;
+      max-width: 300px;
+      margin: 1.5rem auto;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .btn-main:hover {
+      background: #5f3e8c;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    .description {
+      text-align: center;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    .features-boxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .feature-box {
+      background: rgba(118, 75, 162, 0.1);
+      border: 2px solid rgba(118, 75, 162, 0.2);
+      border-radius: 15px;
+      padding: 1.2rem;
+      text-align: center;
+      color: #333;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .feature-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+    .feature-box i {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .feature-box h3 {
+      font-size: 1rem;
+    }
+    .intro-boxes {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .intro-box {
+      background: rgba(118, 75, 162, 0.1);
+      border: 2px solid rgba(118, 75, 162, 0.2);
+      border-radius: 15px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .intro-box h3 {
+      margin-bottom: 0.5rem;
+    }
+    .intro-box p {
+      font-size: 0.9rem;
+    }
+    @media (max-width: 480px) {
+      .feature-box h3, .intro-box h3 {
+        font-size: 0.9rem;
+      }
+      .feature-box i {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="https://res.cloudinary.com/dkhhfnib6/image/upload/v1750316924/HsY-LOGO_hq6lkk.png" alt="House.Yo 好室優" />
+    </div>
+    <div class="description">
+      <br>
+      <br>
+      <h3>歡迎使用 House.Yo 好室優！</h3>
+      <br>
+      <p>這是一個全新的租房媒合平台，整合 Firebase 後端，提供真實的用戶認證與資料存儲功能。</p>
+      <br>
+      <a href="login.html" class="btn-main">登入 / 註冊</a>
+      <br>
+      <br>
+    </div>
+    <div class="features-boxes">
+      <div class="feature-box"><i class="fas fa-bullhorn"></i><h3>免費曝光</h3></div>
+      <div class="feature-box"><i class="fas fa-robot"></i><h3>AI助理</h3></div>
+      <div class="feature-box"><i class="fas fa-mouse-pointer"></i><h3>直覺操作</h3></div>
+      <div class="feature-box"><i class="fas fa-home"></i><h3>刊發物件</h3></div>
+      <div class="feature-box"><i class="fas fa-file-signature"></i><h3>電子合約</h3></div>
+      <div class="feature-box"><i class="fas fa-file-invoice-dollar"></i><h3>智能帳單</h3></div>
+      <div class="feature-box"><i class="fas fa-coins"></i><h3>自動對帳</h3></div>
+      <div class="feature-box"><i class="fas fa-map-marked-alt"></i><h3>地圖找房</h3></div>
+      <div class="feature-box"><i class="fas fa-filter"></i><h3>特殊篩選</h3></div>
+      
+    </div>
+    <div class="intro-boxes">
+      <div class="intro-box"><h3>資料庫加密</h3><p>Firebase 後端，資料永久保存</p></div>
+      <div class="intro-box"><h3>安全認證</h3><p>Firebase Authentication 保護</p></div>
+      <div class="intro-box"><h3>即時同步</h3><p>多裝置資料同步更新</p></div>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
