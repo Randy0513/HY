@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登入頁面 - House.Yo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <style>
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-box {
+      background: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 400px;
+    }
+    .login-box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #764ba2;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type=text], input[type=password] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .phone-row {
+      display: flex;
+      gap: 10px;
+    }
+    .btn {
+      background: #764ba2;
+      color: white;
+      padding: 10px;
+      border: none;
+      width: 100%;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background: #5f3e8c;
+    }
+    .message {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+    @media screen and (max-width: 480px) {
+      .login-box {
+        padding: 30px 20px;
+      }
+      .btn {
+        font-size: 15px;
+        padding: 12px;
+      }
+      .phone-row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>登入 House.Yo</h2>
+    <div id="message" class="message"></div>
+    <form id="login-form">
+      <div class="form-group">
+        <label>手機號碼</label>
+        <div class="phone-row">
+          <input type="text" id="country-code" value="+886" placeholder="國碼" required style="flex: 1">
+          <input type="text" id="phone" placeholder="例如: 912345678" required style="flex: 2">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">密碼</label>
+        <input type="password" id="password" required>
+      </div>
+      <button type="submit" class="btn">登入</button>
+    </form>
+    <button type="button" onclick="window.location.href='register.html'" class="btn" style="background:#888">註冊</button>
+    <button type="button" onclick="window.location.href='index.html'" class="btn" style="background:#ccc; color:#333">返回首頁</button>
+    <button id="google-login" class="btn" style="background:#DB4437">使用 Google 登入</button>
+  </div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    document.getElementById('login-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const countryCode = document.getElementById('country-code').value;
+      const phone = document.getElementById('phone').value;
+      const password = document.getElementById('password').value;
+      const fullPhone = countryCode + phone;
+      const emailFormatPhone = fullPhone + "@houseyo.tw";
+
+      auth.signInWithEmailAndPassword(emailFormatPhone, password)
+        .then(() => {
+          document.getElementById('message').textContent = '登入成功，正在跳轉...';
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 1500);
+        })
+        .catch(error => {
+          document.getElementById('message').textContent = '錯誤：' + error.message;
+        });
+    });
+
+    document.getElementById('google-login').addEventListener('click', function () {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider)
+        .then(result => {
+          document.getElementById('message').textContent = 'Google 登入成功，正在跳轉...';
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 1500);
+        })
+        .catch(error => {
+          document.getElementById('message').textContent = 'Google 登入失敗：' + error.message;
+        });
+    });
+  </script>
+</body>
+</html>
+
